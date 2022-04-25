@@ -15,11 +15,9 @@ Conditions:
   DevResource: !Equals 
     - !Ref EnvType
     - 'dev'
-Conditions:
   UATResource: !Equals 
     - !Ref EnvType
     - 'UAT'
-Conditions:
   ProdResource: !Equals 
     - !Ref EnvType
     - 'prod'
