@@ -21,6 +21,8 @@ Conditions:
   ProdResource: !Equals 
     - !Ref EnvType
     - 'prod'
+  DevOrUATResource: !Or [!Equals [!Ref EnvType, 'dev'], !Equals [!Ref EnvType, 'UAT']]
+
 
 
 Globals:
