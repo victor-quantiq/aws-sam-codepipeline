@@ -12,7 +12,7 @@ Parameters:
     Type: String
 
 Conditions:
-  DevResources: !Equals 
+  DevResource: !Equals 
     - !Ref EnvType
     - 'dev'
 
@@ -52,6 +52,7 @@ Globals:
 Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Condition: DevResource
     Properties:
       # CodeUri: todos/
       Handler: helloworld.lambdaHandler
