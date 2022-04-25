@@ -2,7 +2,7 @@
 
 version = 0.1
 [default]
-[default.default]
+[default.deploy]
 [default.deploy.parameters]
 stack_name = "todo-sam-app-UAT"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1u6en114133fr"
