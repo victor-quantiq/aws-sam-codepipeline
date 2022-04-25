@@ -7,10 +7,14 @@ Description: >
   Sample SAM Template for todo-sam-app
   
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
-# Parameters:
-#   StageName:
-#     Type: String
-#     Default: Prod
+Parameters:
+  EnvType:
+    Type: String
+
+Conditions:
+  DevResources: !Equals 
+    - !Ref EnvType
+    - 'dev'
 
 Globals:
   Function:
