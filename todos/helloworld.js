@@ -20,7 +20,7 @@ exports.lambdaHandler = async (event, context) => {
         response = {
             'statusCode': 200,
             'body': JSON.stringify({
-                message: 'hello world dev environment database updated manually',
+                message: 'hello world \n A new feature to promote to the production environment',
                 // event
                 // location: ret.data.trim()
             })
