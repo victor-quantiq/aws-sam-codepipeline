@@ -1,19 +1,9 @@
-version = 0.1
-[prod]
-[prod.deploy]
-[default.deploy.parameters]
-stack_name = "todo-sam-app"
-s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1u6en114133fr"
-s3_prefix = "todo-sam-app"
-region = "eu-west-3"
-confirm_changeset = true
-capabilities = "CAPABILITY_IAM"
-disable_rollback = false
-image_repositories = []
+#Configurations for development's environments
 
-[dev]
-[dev.deploy]
-[dev.deploy.parameters]
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
 stack_name = "todo-sam-app-dev"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1u6en114133fr"
 s3_prefix = "todo-sam-app-dev"
