@@ -9,6 +9,7 @@ Description: >
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Parameters:
   EnvType:
+    Description: Stage/Environment name
     Type: String
 
 Conditions:
@@ -72,6 +73,7 @@ Resources:
         HelloWorld:
           Type: HttpApi # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
+            Enabled: !Equals [!Ref EnvType, 'UAT']
             Path: /hello
             Method: get
             Auth: 
