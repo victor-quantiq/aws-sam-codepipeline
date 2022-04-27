@@ -9,6 +9,7 @@ Description: >
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Parameters:
   EnvType:
+    Description: Stage/Environment name
     Type: String
 
 Conditions:
@@ -22,8 +23,6 @@ Conditions:
     - !Ref EnvType
     - 'prod'
   DevOrUATResource: !Or [!Equals [!Ref EnvType, 'dev'], !Equals [!Ref EnvType, 'UAT']]
-
-
 
 Globals:
   Function:
@@ -57,25 +56,30 @@ Globals:
               - 4967qgmj4q2g3srd7h5ot0u3dg  
           IdentitySource: "$request.header.Authorization"
       DefaultAuthorizer: cognitoOAuth2Authorizer
-
+  
 Resources:
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+
+
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Condition: DevOrUATResource
     Properties:
-      # CodeUri: todos/
+      # CodeUri: todos/true
       Handler: helloworld.lambdaHandler
       # Runtime: nodejs14.x
       Architectures:
         - x86_64
       Events:
         HelloWorld:
-          Type: HttpApi # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /hello
             Method: get
             Auth: 
               Authorizer: 'NONE'
+          Type: HttpApi # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+
 
   HelloWorldFunction2:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
