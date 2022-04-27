@@ -118,7 +118,6 @@ Resources:
             Properties:
               Path: /todos
               Method: get
-
   GetTodoFunction:
     Type: AWS::Serverless::Function
     Properties:
