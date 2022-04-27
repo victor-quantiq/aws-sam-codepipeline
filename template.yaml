@@ -35,6 +35,7 @@ Globals:
       Variables:
         # TODO_TABLE: todo
         TODO_TABLE: !Ref TodoSamTable #Ca pourrait être un param
+    
   HttpApi:
     CorsConfiguration:
       AllowOrigins:
@@ -57,7 +58,8 @@ Globals:
             audience: 
               - 4967qgmj4q2g3srd7h5ot0u3dg  
           IdentitySource: "$request.header.Authorization"
-      DefaultAuthorizer: cognitoOAuth2Authorizer
+      DefaultAuthorizer: !Ref AWS::NoValue
+
   
 Resources:
   HttpApi:
@@ -79,8 +81,9 @@ Resources:
             Path: /hello
             Method: get
             Auth: 
-              Authorizer: !Ref EnvAuth
+              Authorizer: cognitoOAuth2Authorizer
           Type: HttpApi # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          
 
 
   HelloWorldFunction2:
@@ -97,8 +100,6 @@ Resources:
           Properties:
             Path: /hello2
             Method: get
-            Auth: 
-              Authorizer: 'NONE'
 
   ListTodosFunction:
       Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -117,8 +118,6 @@ Resources:
             Properties:
               Path: /todos
               Method: get
-              Auth: 
-                Authorizer: cognitoOAuth2Authorizer
 
   GetTodoFunction:
     Type: AWS::Serverless::Function
