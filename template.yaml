@@ -32,7 +32,7 @@ Globals:
     Environment:
       Variables:
         # TODO_TABLE: todo
-        TODO_TABLE: !Ref TodoSamTable
+        TODO_TABLE: !Ref TodoSamTable #Ca pourrait être un param
   HttpApi:
     CorsConfiguration:
       AllowOrigins:
