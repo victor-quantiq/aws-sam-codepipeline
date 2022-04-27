@@ -24,8 +24,6 @@ Conditions:
     - 'prod'
   DevOrUATResource: !Or [!Equals [!Ref EnvType, 'dev'], !Equals [!Ref EnvType, 'UAT']]
 
-
-
 Globals:
   Function:
     Timeout: 3
@@ -58,13 +56,18 @@ Globals:
               - 4967qgmj4q2g3srd7h5ot0u3dg  
           IdentitySource: "$request.header.Authorization"
       DefaultAuthorizer: cognitoOAuth2Authorizer
-
+  
 Resources:
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      DisableExecuteApiEndpoint: false
+
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Condition: DevOrUATResource
     Properties:
-      # CodeUri: todos/
+      # CodeUri: todos/true
       Handler: helloworld.lambdaHandler
       # Runtime: nodejs14.x
       Architectures:
