@@ -13,7 +13,8 @@ capabilities = "CAPABILITY_IAM"
 disable_rollback = false
 image_repositories = []
 parameter_overrides=[
-    "EnvType=dev"
+    "EnvType=dev",
+    "EnvAuth=cognitoOAuth2Authorizer"
 ]
 
 
