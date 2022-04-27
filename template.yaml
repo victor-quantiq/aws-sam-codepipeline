@@ -11,6 +11,8 @@ Parameters:
   EnvType:
     Description: Stage/Environment name
     Type: String
+  EnvAuth: 
+    Type: String
 
 Conditions:
   DevResource: !Equals 
@@ -77,7 +79,7 @@ Resources:
             Path: /hello
             Method: get
             Auth: 
-              Authorizer: 'NONE'
+              Authorizer: !Ref EnvAuth
           Type: HttpApi # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
 
 
