@@ -20,7 +20,11 @@ exports.lambdaHandler = async (event, context) => {
         response = {
             'statusCode': 200,
             'body': JSON.stringify({
+<<<<<<< HEAD
                 message: 'hello world \n checkout implementation',
+=======
+                message: 'hello world \n Hotfix on the prod',
+>>>>>>> UAT
                 anotherMessage: 'Another feature to promote to the production stage'
                 // event
                 // location: ret.data.trim()
