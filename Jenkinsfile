@@ -40,7 +40,7 @@ pipeline {
     }
     stage('Promotion') {
       steps {
-        sh 'git merge origin/UAT'
+        sh 'git push origin/UAT'
       }
     }
   }
