@@ -1,6 +1,6 @@
 pipeline {
   agent any
- 
+
   stages {
     // stage('Install sam-cli') {
     //   steps {
@@ -24,18 +24,23 @@ pipeline {
           sh 'sam deploy --config-env dev'
 
           script {
-            
-              try{
-                dir ('todos') {
+              try {
+              dir ('todos') {
                 sh 'npm ci'
                 sh 'AWS_REGION=eu-west-3 STACK_NAME=todo-sam-app-dev npm test tests/integ/test-integ-api.js'
-                }
               }
-              catch (Exception e){
-                sh 'git reset --hard HEAD~1 && sam build --config-env dev && sam deploy --config-env dev && wget --post-data="" $BUILD_URL/stop'
+              }
+              catch (Exception e) {
+              //if integration failed, no simple way to rolll-back the sam deployment. So, we go to the previous commit (stable version), and redeploy. Then we break the pipeline
+              sh 'git reset --hard HEAD~1 && sam build --config-env dev && sam deploy --config-env dev && wget --post-data="" $BUILD_URL/stop'
               }
           }
         }
+      }
+    }
+    stage('Promotion') {
+      steps {
+        sh 'git merge origin/UAT'
       }
     }
   }
