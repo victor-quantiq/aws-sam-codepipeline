@@ -22,9 +22,18 @@ pipeline {
         withAWS(credentials: 'sam-jenkins', region: 'eu-west-3') {
           unstash 'aws-sam'
           sh 'sam deploy --config-env dev'
-          dir ('todos') {
-            sh 'npm ci'
-            sh 'AWS_REGION=eu-west-3 STACK_NAME=todo-sam-app-dev npm test tests/integ/test-integ-api.js'
+
+          script {
+            
+              try{
+                dir ('todos') {
+                sh 'npm ci'
+                sh 'AWS_REGION=eu-west-3 STACK_NAME=todo-sam-app-dev npm test tests/integ/test-integ-api.js'
+                }
+              }
+              catch (Exception e){
+                sh 'git reset --hard HEAD~1 && sam build --config-env dev && sam deploy --config-env dev && wget --post-data="" $BUILD_URL/stop)'
+              }
           }
         }
       }
