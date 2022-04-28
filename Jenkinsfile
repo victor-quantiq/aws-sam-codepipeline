@@ -32,7 +32,7 @@ pipeline {
                 }
               }
               catch (Exception e){
-                sh 'git reset --hard HEAD~1 && sam build --config-env dev && sam deploy --config-env dev && wget --post-data="" $BUILD_URL/stop)'
+                sh 'git reset --hard HEAD~1 && sam build --config-env dev && sam deploy --config-env dev && wget --post-data="" $BUILD_URL/stop'
               }
           }
         }
