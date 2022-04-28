@@ -23,7 +23,6 @@ pipeline {
           unstash 'aws-sam'
           sh 'sam deploy --config-env dev'
           dir ('todos') {
-            sh 'npm install'
             sh 'npm ci'
             sh 'AWS_REGION=eu-west-3 STACK_NAME=todo-sam-app-dev npm test tests/integ/test-integ-api.js'
           }
