@@ -11,8 +11,6 @@ Parameters:
   EnvType:
     Description: Stage/Environment name
     Type: String
-  EnvAuth: 
-    Type: String
 
 Conditions:
   DevResource: !Equals 
