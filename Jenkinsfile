@@ -22,7 +22,7 @@ pipeline {
         S3_BUCKET = 'sam-jenkins-demo-us-west-2-user1'
       }
       steps {
-        withAWS(credentials: 'sam-jenkins-demo-credentials', region: 'eu-west-3') {
+        withAWS(credentials: 'sam-jenkins', region: 'eu-west-3') {
           unstash 'venv'
           unstash 'aws-sam'
           sh 'venv/bin/sam deploy --config-env dev'
