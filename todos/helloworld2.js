@@ -20,7 +20,7 @@ exports.lambdaHandler = async (event, context) => {
             'statusCode': 200,
             'body': JSON.stringify({
                 message: 'hello world 2 \n A new revolutionary function to deploy to the production environment',
-                anotherMessage: 'another message to promote to UAT environment'
+                anotherMessage: 'another test message to promote to UAT environment'
             })
         }
     } catch (err) {
