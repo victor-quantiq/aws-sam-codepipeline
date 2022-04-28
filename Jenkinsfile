@@ -12,20 +12,18 @@ pipeline {
       steps {
         // unstash 'venv'
         // sh 'venv/bin/sam build'
-        sh 'sam build'
+        sh 'sam build --config-env dev'
+        sh 'cd todos && npm install && npm run test && cd ../'
         stash includes: '**/.aws-sam/**/*', name: 'aws-sam'
       }
     }
-    stage('beta') {
-      environment {
-        STACK_NAME = 'sam-app-beta-stage'
-        S3_BUCKET = 'sam-jenkins-demo-us-west-2-user1'
-      }
+    stage('Deploy') {
       steps {
         withAWS(credentials: 'sam-jenkins', region: 'eu-west-3') {
           unstash 'aws-sam'
           sh 'sam deploy --config-env dev'
           dir ('todos') {
+            sh 'npm install'
             sh 'npm ci'
             sh 'npm run integ-test'
           }
