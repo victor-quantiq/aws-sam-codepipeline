@@ -42,7 +42,7 @@ pipeline {
       steps {
         sh 'git remote -v'
         sh 'git branch'
-        sh 'git push origin dev:UAT'
+        sh 'git push origin HEAD:UAT'
       }
     }
   }
