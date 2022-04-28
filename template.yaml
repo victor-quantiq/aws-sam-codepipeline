@@ -80,8 +80,8 @@ Resources:
           Properties:
             Path: /hello
             Method: get
-            Auth: 
-              Authorizer: cognitoOAuth2Authorizer
+            # Auth: 
+            #   Authorizer: cognitoOAuth2Authorizer
           Type: HttpApi # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           
 
