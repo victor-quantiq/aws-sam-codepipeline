@@ -1,20 +1,72 @@
-#Configurations for UAT's environment
+#Configurations for defaults's environments
 
 version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "todo-sam-app-UAT"
+stack_name = "todo-sam-app-dev"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1u6en114133fr"
-s3_prefix = "todo-sam-app-UAT"
+s3_prefix = "todo-sam-app-dev"
 region = "eu-west-3"
-confirm_changeset = true
+confirm_changeset = false #true
 capabilities = "CAPABILITY_IAM"
 disable_rollback = false
 image_repositories = []
 parameter_overrides=[
-    "EnvType=UAT"
+    "EnvType=dev",
 ]
 
+
+#Configurations for dev's environments
+
+[dev]
+[dev.deploy]
+[dev.deploy.parameters]
+stack_name = "todo-sam-app-dev"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1u6en114133fr"
+s3_prefix = "todo-sam-app-dev"
+region = "eu-west-3"
+confirm_changeset = false #true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = false
+image_repositories = []
+parameter_overrides=[
+    "EnvType=dev",
+]
+
+
+#Configurations for UAT's environments
+
+[UAT]
+[UAT.deploy]
+[UAT.deploy.parameters]
+stack_name = "todo-sam-app-UAT"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1u6en114133fr"
+s3_prefix = "todo-sam-app-UAT"
+region = "eu-west-3"
+confirm_changeset = false #true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = false
+image_repositories = []
+parameter_overrides=[
+    "EnvType=UAT",
+]
+
+#Configurations for prod's environments
+
+[prod]
+[prod.deploy]
+[prod.deploy.parameters]
+stack_name = "todo-sam-app-prod"
+s3_bucket = "aws-sam-cli-managed-prod-samclisourcebucket-1u6en114133fr"
+s3_prefix = "todo-sam-app-prod"
+region = "eu-west-3"
+confirm_changeset = false #true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = false
+image_repositories = []
+parameter_overrides=[
+    "EnvType=prod",
+]
 
 
