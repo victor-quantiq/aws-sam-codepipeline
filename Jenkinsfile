@@ -25,7 +25,7 @@ pipeline {
           dir ('todos') {
             sh 'npm install'
             sh 'npm ci'
-            sh 'npm run integ-test'
+            sh 'AWS_REGION=eu-west-3 STACK_NAME=todo-sam-app-dev npm test tests/integ/test-integ-api.js'
           }
         }
       }
