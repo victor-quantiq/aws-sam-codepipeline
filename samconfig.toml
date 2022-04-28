@@ -23,7 +23,7 @@ parameter_overrides=[
 [dev.deploy]
 [dev.deploy.parameters]
 stack_name = "todo-sam-app-dev"
-s3_bucket = "aws-sam-cli-managed-dev-samclisourcebucket-1u6en114133fr"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1u6en114133fr"
 s3_prefix = "todo-sam-app-dev"
 region = "eu-west-3"
 confirm_changeset = false #true
@@ -41,7 +41,7 @@ parameter_overrides=[
 [UAT.deploy]
 [UAT.deploy.parameters]
 stack_name = "todo-sam-app-UAT"
-s3_bucket = "aws-sam-cli-managed-UAT-samclisourcebucket-1u6en114133fr"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1u6en114133fr"
 s3_prefix = "todo-sam-app-UAT"
 region = "eu-west-3"
 confirm_changeset = false #true
