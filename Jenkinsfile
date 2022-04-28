@@ -23,9 +23,8 @@ pipeline {
       }
       steps {
         withAWS(credentials: 'sam-jenkins', region: 'eu-west-3') {
-          unstash 'venv'
           unstash 'aws-sam'
-          sh 'venv/bin/sam deploy --config-env dev'
+          sh 'sam deploy --config-env dev'
           dir ('todos') {
             sh 'npm ci'
             sh 'npm run integ-test'
