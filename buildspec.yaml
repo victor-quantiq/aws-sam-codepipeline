@@ -5,13 +5,8 @@ phases:
        nodejs: 14.0
   build:
     commands:
-<<<<<<< HEAD
-      # - cfn-lint -t template.yaml
-      # - aws cloudformation package --template-file template.yaml --output-template-file packaged-template.yaml
-=======
       #- cfn-lint -t template.yaml
       #- aws cloudformation package --template-file template.yaml --output-template-file packaged-template.yaml
->>>>>>> 83ac21505c316bf0b4abc8326ac28ff17ec05f78
       - sam build
 artifacts:
   files:
