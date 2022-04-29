@@ -8,7 +8,8 @@ phases:
   build:
     commands:
       #- cfn-lint -t template.yaml
-      - aws cloudformation package --template-file template.yaml --output-template-file packaged-template.yaml
+      #- aws cloudformation package --template-file template.yaml --output-template-file packaged-template.yaml
+      - sam build
 artifacts:
   files:
     - packaged-template.yaml
