@@ -35,7 +35,7 @@ Parameters:
     NoEcho: true
     Type: String
     # Default: "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"
-      Default: ""
+    Default: ""
   GitHubRepo:
     Description: GitHub repo name
     Type: String
