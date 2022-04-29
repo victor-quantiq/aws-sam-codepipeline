@@ -3,8 +3,6 @@ phases:
   install:
     runtime-versions:
        nodejs: 14.0
-    commands:
-      - pip install awscli
   build:
     commands:
       # - cfn-lint -t template.yaml
