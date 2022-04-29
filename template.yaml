@@ -16,7 +16,7 @@ Parameters:
       - BUILD_GENERAL1_SMALL
       - BUILD_GENERAL1_MEDIUM
       - BUILD_GENERAL1_LARGE
-    Default: BUILD_GENERAL1_SMALL
+    Default: BUILD_GENERAL1_MEDIUM
     Description: AWS CodeBuild project compute type.
     Type: String
   EnvironmentType:
@@ -35,7 +35,7 @@ Parameters:
     NoEcho: true
     Type: String
     # Default: "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"
-    Default: ""
+    Default: "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"
   GitHubRepo:
     Description: GitHub repo name
     Type: String

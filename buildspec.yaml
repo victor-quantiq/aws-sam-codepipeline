@@ -2,13 +2,14 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-       python: 3.7
+       nodejs: 14.0
     commands:
-      - pip install cfn-lint
+      - pip install awscli
   build:
     commands:
-      - cfn-lint -t template.yaml
-      - aws cloudformation package --template-file template.yaml --output-template-file packaged-template.yaml
+      # - cfn-lint -t template.yaml
+      # - aws cloudformation package --template-file template.yaml --output-template-file packaged-template.yaml
+      - sam build
 artifacts:
   files:
     - packaged-template.yaml
