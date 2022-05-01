@@ -154,33 +154,33 @@ Resources:
                 - Name: SourceArtifact
               OutputArtifacts:
                 - Name: BuildArtifact
-        - Name: Deploy
-          Actions:
-            - Name: CreateChangeSet
-              ActionTypeId:
-                Category: Deploy
-                Owner: AWS
-                Provider: CloudFormation
-                Version: "1"
-              InputArtifacts:
-                - Name: BuildArtifact
-              Configuration:
-                ActionMode: CHANGE_SET_REPLACE
-                Capabilities: CAPABILITY_IAM
-                RoleArn: !GetAtt PipelineRole.Arn
-                StackName: !Ref DeployStackName
-                TemplatePath: "BuildArtifact::packaged-template.yaml"
-              RunOrder: 1
-            - Name: ExecuteChangeSet
-              ActionTypeId:
-                Category: Deploy
-                Owner: AWS
-                Provider: CloudFormation
-                Version: "1"
-              Configuration:
-                ActionMode: CHANGE_SET_EXECUTE
-                StackName: !Ref DeployStackName
-              RunOrder: 2
+        # - Name: Deploy
+        #   Actions:
+        #     - Name: CreateChangeSet
+        #       ActionTypeId:
+        #         Category: Deploy
+        #         Owner: AWS
+        #         Provider: CloudFormation
+        #         Version: "1"
+        #       InputArtifacts:
+        #         - Name: BuildArtifact
+        #       Configuration:
+        #         ActionMode: CHANGE_SET_REPLACE
+        #         Capabilities: CAPABILITY_IAM
+        #         RoleArn: !GetAtt PipelineRole.Arn
+        #         StackName: !Ref DeployStackName
+        #         TemplatePath: "BuildArtifact::packaged-template.yaml"
+        #       RunOrder: 1
+        #     - Name: ExecuteChangeSet
+        #       ActionTypeId:
+        #         Category: Deploy
+        #         Owner: AWS
+        #         Provider: CloudFormation
+        #         Version: "1"
+        #       Configuration:
+        #         ActionMode: CHANGE_SET_EXECUTE
+        #         StackName: !Ref DeployStackName
+        #       RunOrder: 2
 
   PipelineRole:
     Type: AWS::IAM::Role
